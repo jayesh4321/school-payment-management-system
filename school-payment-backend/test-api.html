@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 15px; margin: 5px; background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🧪 School Payment API Test</h1>
+    
+    <div class="test-section">
+        <h3>1. Health Check</h3>
+        <button onclick="testHealth()">Test Health Check</button>
+        <div id="health-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>2. Get Transactions</h3>
+        <button onclick="testTransactions()">Get All Transactions</button>
+        <div id="transactions-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>3. User Login</h3>
+        <button onclick="testLogin()">Login as Admin</button>
+        <div id="login-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>4. User Registration</h3>
+        <button onclick="testRegister()">Register New User</button>
+        <div id="register-result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000';
+        let authToken = '';
+
+        async function testHealth() {
+            try {
+                const response = await fetch(`${API_BASE}/`);
+                const data = await response.text();
+                document.getElementById('health-result').innerHTML = `
+                    <div class="success">
+                        <strong>✅ Success!</strong>
+                        <pre>${data}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('health-result').innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error:</strong>
+                        <pre>${error.message}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        async function testTransactions() {
+            try {
+                const response = await fetch(`${API_BASE}/payment/transactions`);
+                const data = await response.json();
+                document.getElementById('transactions-result').innerHTML = `
+                    <div class="success">
+                        <strong>✅ Success!</strong>
+                        <p>Found ${data.transactions.length} transactions</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('transactions-result').innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error:</strong>
+                        <pre>${error.message}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        async function testLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@school.com',
+                        password: 'admin123'
+                    })
+                });
+                const data = await response.json();
+                authToken = data.access_token;
+                document.getElementById('login-result').innerHTML = `
+                    <div class="success">
+                        <strong>✅ Success!</strong>
+                        <p>Token: ${authToken ? 'Received' : 'Not received'}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('login-result').innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error:</strong>
+                        <pre>${error.message}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        async function testRegister() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'testuser@example.com',
+                        password: 'password123',
+                        name: 'Test User',
+                        role: 'admin'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('register-result').innerHTML = `
+                    <div class="success">
+                        <strong>✅ Success!</strong>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('register-result').innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error:</strong>
+                        <pre>${error.message}</pre>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
