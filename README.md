@@ -25,6 +25,119 @@ This system provides a complete solution for schools to manage their payment pro
 └─────────────────────┘    └─────────────────────┘    └─────────────────────┘
 ```
 
+## 📸 Application Screenshots
+
+### 🏠 **Homepage & Landing**
+![Homepage 1](ss/home1.png)
+*Modern landing page with gradient design and clear call-to-action buttons*
+
+![Homepage 2](ss/home2.png)
+*Feature showcase section highlighting key capabilities*
+
+![Homepage 3](ss/home3.png)
+*Footer section with contact information and links*
+
+### 📊 **Dashboard Overview**
+![Dashboard Main](ss/db1.png)
+*Main dashboard showing transaction statistics, recent transactions, and key metrics*
+
+![Transaction Table](ss/db_table.png)
+*Interactive transaction table with sorting, filtering, and pagination capabilities*
+
+![Transaction Details](ss/db_transactions_detail.png)
+*Detailed transaction modal showing comprehensive payment information*
+
+### 📈 **Analytics & Reports**
+![Analytics Dashboard](ss/db_analytics.png)
+*Analytics page with transaction status distribution charts and performance insights*
+
+### 📞 **Contact & Support**
+![Contacts Page](ss/db_contacts.png)
+*Contact page with support information and communication options*
+
+### ℹ️ **About Page**
+![About Page](ss/about.png)
+*About page providing information about the application and its features*
+
+### 🗄️ **Database & Backend**
+![MongoDB Atlas](ss/mongodb.png)
+*MongoDB Atlas database showing the school-payment database with collections*
+
+![Postman API Testing](ss/postman_api.png)
+*Postman collection demonstrating API testing and endpoint documentation*
+
+## 🎯 **Feature Walkthrough**
+
+### **🏠 Homepage Experience**
+The application starts with a modern, professional landing page featuring:
+- **Gradient Design**: Eye-catching color schemes with smooth transitions
+- **Clear Navigation**: Intuitive menu structure for easy access
+- **Feature Highlights**: Showcase of key capabilities and benefits
+- **Call-to-Action**: Prominent buttons guiding users to the dashboard
+
+### **📊 Dashboard Functionality**
+The main dashboard provides comprehensive transaction management:
+- **Real-time Statistics**: Live updates of transaction counts, amounts, and success rates
+- **Interactive Cards**: Animated metric cards showing key performance indicators
+- **Transaction Table**: Sortable, filterable table with pagination
+- **Quick Actions**: View details, copy order IDs, and export functionality
+- **Status Indicators**: Color-coded status badges for easy identification
+
+### **📈 Analytics & Insights**
+The analytics page offers deep insights into payment performance:
+- **Status Distribution**: Pie charts showing success/failure/pending ratios
+- **Revenue Trends**: Area charts displaying financial performance over time
+- **Performance Metrics**: Key indicators like peak hours and response times
+- **Real-time Data**: Live updates from the MongoDB backend
+
+### **🔍 Transaction Details**
+Detailed transaction information is available through:
+- **Modal Popups**: Comprehensive transaction details in organized cards
+- **Payment Information**: Amounts, gateways, and payment methods
+- **Student Data**: Student information and school details
+- **Timestamps**: Creation and update times with proper formatting
+- **Action Buttons**: Copy order IDs and close functionality
+
+### **🗄️ Backend Integration**
+The system demonstrates robust backend capabilities:
+- **MongoDB Atlas**: Cloud database with proper collections and indexing
+- **API Testing**: Postman collection for comprehensive endpoint testing
+- **Data Validation**: Proper error handling and input validation
+- **Webhook Processing**: Real-time payment status updates
+
+## 🔧 **Technical Implementation Details**
+
+### **Frontend Architecture**
+Based on the screenshots, the frontend demonstrates:
+- **Modern React Components**: Built with React 18 and TypeScript
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Component Library**: shadcn/ui components for consistent design
+- **State Management**: React hooks for efficient state handling
+- **API Integration**: Axios-based HTTP client for backend communication
+
+### **Backend Architecture**
+The backend showcases:
+- **NestJS Framework**: Enterprise-grade Node.js framework
+- **MongoDB Integration**: Mongoose ODM with proper schemas
+- **JWT Authentication**: Secure token-based authentication
+- **RESTful API**: Well-structured endpoints with proper HTTP methods
+- **Data Validation**: class-validator for input validation
+- **Error Handling**: Consistent error responses across all endpoints
+
+### **Database Design**
+The MongoDB Atlas screenshot shows:
+- **Collections**: Orders, OrderStatus, Users, WebhookLogs
+- **Indexing**: Optimized for performance on frequently queried fields
+- **Relationships**: Proper references between collections
+- **Data Types**: Appropriate field types for each data point
+
+### **API Testing**
+The Postman collection demonstrates:
+- **Endpoint Coverage**: All major API endpoints tested
+- **Authentication**: JWT token handling and validation
+- **Request/Response**: Proper HTTP methods and status codes
+- **Error Scenarios**: Testing of error conditions and edge cases
+
 ## 🚀 Quick Start
 
 ### Prerequisites
